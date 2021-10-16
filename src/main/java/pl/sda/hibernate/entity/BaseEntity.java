@@ -5,7 +5,7 @@ import javax.persistence.MappedSuperclass;
 import javax.persistence.PrePersist;
 import java.time.LocalDate;
 
-@MappedSuperclass
+@MappedSuperclass // ta adnotacja musi byc dodana do base entity, zeby hibernate mogl uzyc tej klasy jako bazowej
 public abstract class BaseEntity {
     @Id
     private int id;
