@@ -26,6 +26,9 @@ public class Hibernate {
         harryPotter.setType("sci-fi");
         session.update(harryPotter);
 
+        // USUWAMY REKORD
+        session.delete(harryPotter);
+
         // POTWIERDZENIE ZAPISU DO BAZY DANYCH - COMMIT
         session.getTransaction().commit();
         session.close();
