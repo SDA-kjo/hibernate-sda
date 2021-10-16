@@ -22,5 +22,6 @@
         <property name="current_session_context_class">thread</property>
 
         <mapping class="pl.sda.hibernate.entity.Customer" />
+        <mapping class="pl.sda.hibernate.entity.Teacher" />
     </session-factory>
 </hibernate-configuration>

@@ -1,12 +1,10 @@
 package pl.sda.hibernate;
 
 import org.hibernate.Session;
-import org.hibernate.query.Query;
-import pl.sda.hibernate.entity.ContactDetails;
-import pl.sda.hibernate.entity.Customer;
+import pl.sda.hibernate.entity.Person;
+import pl.sda.hibernate.entity.Teacher;
+import pl.sda.hibernate.entity.TeacherId;
 import pl.sda.hibernate.utils.HibernateUtil;
-
-import java.util.List;
 
 public class Hibernate {
 
@@ -14,19 +12,22 @@ public class Hibernate {
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
 
+        Teacher teacher = new Teacher();
+        TeacherId teacherId = new TeacherId();
+        teacherId.setDocumentId(123);
+        teacherId.setLicence("Licence abc");
+        teacher.setTeacherId(teacherId);
 
+        Person person = new Person();
+        person.setFirstName("Adam");
+        person.setLastName("Kwiatkowski");
+        teacher.setPerson(person);
+
+        // ZAPIS DO BAZY DANYCH
+        session.save(teacher);
+
+        // POTWIERDZENIE ZAPISU DO BAZY DANYCH - COMMIT
         session.getTransaction().commit();
-
-        Query<Customer> q = session.createQuery("From Customer", Customer.class);
-        List<Customer> resultList = q.list();
-
-        for (Customer c : resultList) {
-            System.out.println("Customer: " + c.getCustomerNumber() + " : " + c.getCustomerName());
-            ContactDetails contactDetails = c.getContactDetails();
-            System.out.println("Contact for customer: " + contactDetails.getContactFirstName() + " | " + contactDetails.getPhone());
-        }
-
-
         session.close();
         HibernateUtil.close();
     }
