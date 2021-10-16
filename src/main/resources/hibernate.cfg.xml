@@ -23,5 +23,6 @@
 
         <mapping class="pl.sda.hibernate.entity.Customer" />
         <mapping class="pl.sda.hibernate.entity.Teacher" />
+        <mapping class="pl.sda.hibernate.entity.Student" />
     </session-factory>
 </hibernate-configuration>
