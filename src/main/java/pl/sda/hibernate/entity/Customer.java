@@ -6,7 +6,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import java.util.List;
 
 @Entity
 @Table(name = "customers")
@@ -24,6 +26,16 @@ public class Customer {
     @Column
     private String creditLimit;
 
+    @OneToMany(mappedBy = "customer") // to znaczy, ze relacja oneToMany bedzie zdefiniowana poprzez pole 'customer' w klasie Order
+    private List<Order> orders;
+
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
+    }
 
     public int getCustomerNumber() {
         return customerNumber;
