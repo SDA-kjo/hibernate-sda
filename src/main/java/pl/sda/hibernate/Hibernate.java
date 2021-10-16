@@ -1,10 +1,7 @@
 package pl.sda.hibernate;
 
 import org.hibernate.Session;
-import pl.sda.hibernate.entity.Person;
-import pl.sda.hibernate.entity.Student;
-import pl.sda.hibernate.entity.Teacher;
-import pl.sda.hibernate.entity.TeacherId;
+import pl.sda.hibernate.entity.Book;
 import pl.sda.hibernate.utils.HibernateUtil;
 
 public class Hibernate {
@@ -14,18 +11,13 @@ public class Hibernate {
         session.beginTransaction();
 
         // stworzenie encji, ktora zapiszemy w bazie danych
-        Student student = new Student();
-        // dla studenta nie tworzymy studentId, tylko w obiekcie student ustawiamy pola z klucza zlozonego
-        student.setDocumentId(123);
-        student.setIndexNumber("09876543");
-
-        Person person = new Person();
-        person.setLastName("Bond");
-        person.setFirstName("James");
-        student.setPerson(person);
+        Book book = new Book();
+        book.setId(1);
+        book.setTitle("Harry Potter");
+        book.setType("fantasy");
 
         // ZAPIS DO BAZY DANYCH
-        session.save(student);
+        session.save(book);
 
         // POTWIERDZENIE ZAPISU DO BAZY DANYCH - COMMIT
         session.getTransaction().commit();

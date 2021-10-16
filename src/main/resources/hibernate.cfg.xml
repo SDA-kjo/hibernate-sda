@@ -24,5 +24,7 @@
         <mapping class="pl.sda.hibernate.entity.Customer" />
         <mapping class="pl.sda.hibernate.entity.Teacher" />
         <mapping class="pl.sda.hibernate.entity.Student" />
+        <mapping class="pl.sda.hibernate.entity.Book" />
+        <mapping class="pl.sda.hibernate.entity.BookType" />
     </session-factory>
 </hibernate-configuration>
