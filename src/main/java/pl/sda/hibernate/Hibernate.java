@@ -22,6 +22,10 @@ public class Hibernate {
         // SPRAWDZAMY TYPE. HIBERNATE POWINIEN ZROBIC JOIN-a TABEL books I book_type
         System.out.println("Harry Potter type: " + harryPotter.getType());
 
+        // ROBIMY UPDATE TYPU
+        harryPotter.setType("sci-fi");
+        session.update(harryPotter);
+
         // POTWIERDZENIE ZAPISU DO BAZY DANYCH - COMMIT
         session.getTransaction().commit();
         session.close();
