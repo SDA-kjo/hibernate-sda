@@ -13,6 +13,21 @@ public class Hibernate {
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
 
+        Customer customerToSave = new Customer();
+        customerToSave.setCustomerName("Ibis hotel");
+        customerToSave.setContactFirstName("Jan");
+        customerToSave.setContactLastName("Kowalski");
+        customerToSave.setCity("Warszawa");
+        customerToSave.setAddressLine1("Grzybowska");
+        customerToSave.setState("mazowieckie");
+        customerToSave.setPostalCode("00-000");
+        customerToSave.setCountry("Poland");
+        customerToSave.setPhone("123-456-789");
+
+        session.save(customerToSave);
+
+        session.getTransaction().commit();
+
         Query<Customer> q = session.createQuery("From Customer", Customer.class);
         List<Customer> resultList = q.list();
 
