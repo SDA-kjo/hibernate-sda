@@ -12,7 +12,7 @@ import javax.persistence.Table;
 public class Student {
 
     /**
-     * Te same pola co w
+     * Te same pola co w StudentId - niestety w tym rozwiazaniu nalezy skopiowac te pola
      */
     @Id
     private int documentId;
