@@ -17,6 +17,11 @@ public class Hibernate {
         // wykorzystanie lambdy do pobrania wyniku z optionala
         result.ifPresent(s -> System.out.println("Laczna suma wszyskich limitow to: " + result));
 
+
+        /**
+         * Przyklady: https://www.tutorialspoint.com/hibernate/hibernate_query_language.htm
+         */
+
         // POTWIERDZENIE ZAPISU DO BAZY DANYCH - COMMIT
         session.getTransaction().commit();
         session.close();
