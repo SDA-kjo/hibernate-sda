@@ -1,5 +1,6 @@
 package pl.sda.hibernate.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -21,7 +22,7 @@ public class Reader {
 
     private String lastName;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "reader_subscriptions", joinColumns = {@JoinColumn(referencedColumnName = "readerId")},
             inverseJoinColumns = {@JoinColumn(referencedColumnName = "subsrciptionId")})
     private List<Subscription> subscriptions;
@@ -56,5 +57,13 @@ public class Reader {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public List<Subscription> getSubscriptions() {
+        return subscriptions;
+    }
+
+    public void setSubscriptions(List<Subscription> subscriptions) {
+        this.subscriptions = subscriptions;
     }
 }
