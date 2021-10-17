@@ -28,5 +28,7 @@
         <mapping class="pl.sda.hibernate.entity.BookType" />
         <mapping class="pl.sda.hibernate.entity.Movie" />
         <mapping class="pl.sda.hibernate.entity.Order" />
+        <mapping class="pl.sda.hibernate.entity.Reader" />
+        <mapping class="pl.sda.hibernate.entity.Subscription" />
     </session-factory>
 </hibernate-configuration>
