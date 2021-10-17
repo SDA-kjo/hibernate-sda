@@ -24,7 +24,7 @@ public class Customer {
     private ContactDetails contactDetails;
 
     @Column
-    private String creditLimit;
+    private double creditLimit;
 
     @OneToMany(mappedBy = "customer") // to znaczy, ze relacja oneToMany bedzie zdefiniowana poprzez pole 'customer' w klasie Order
     private List<Order> orders;
@@ -53,11 +53,11 @@ public class Customer {
         this.customerName = customerName;
     }
 
-    public String getCreditLimit() {
+    public double getCreditLimit() {
         return creditLimit;
     }
 
-    public void setCreditLimit(String creditLimit) {
+    public void setCreditLimit(double creditLimit) {
         this.creditLimit = creditLimit;
     }
 

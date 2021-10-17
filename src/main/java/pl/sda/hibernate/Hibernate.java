@@ -3,9 +3,7 @@ package pl.sda.hibernate;
 import org.hibernate.Session;
 import pl.sda.hibernate.utils.HibernateUtil;
 
-import javax.persistence.EntityManager;
-import javax.persistence.Query;
-import java.util.List;
+import java.util.Optional;
 
 public class Hibernate {
 
@@ -13,9 +11,11 @@ public class Hibernate {
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
 
-        Query query = session.createQuery("select customerName from Customer"); // proste zapytanie HQL
-        List<String> listOfNames = query.getResultList(); // odebranie wynikow
-        listOfNames.forEach(System.out::println); // uzycie referencji metody zamiast lambdy
+        // zwrocenie optionala - jezeli nie ma wyniku to bedzie pusty
+        Optional result =  session.createQuery("select sum(creditLimit) from Customer").uniqueResultOptional();
+
+        // wykorzystanie lambdy do pobrania wyniku z optionala
+        result.ifPresent(s -> System.out.println("Laczna suma wszyskich limitow to: " + result));
 
         // POTWIERDZENIE ZAPISU DO BAZY DANYCH - COMMIT
         session.getTransaction().commit();
